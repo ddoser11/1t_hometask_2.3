@@ -1,0 +1,13 @@
+SELECT o.customerID, o.TotalAmount, c.FirstName, c.LastName, SUM(o.TotalAmount) FROM Orders o
+join customers c ON  o.customerID = c.CustomerID
+GROUP BY o.customerID
+
+
+SELECT o.OrderID, c.FirstName, c.LastName, o.TotalAmount FROM Orders o
+join customers c ON  o.customerID = c.CustomerID
+order by totalamount desc
+
+
+SELECT c.FirstName, c.LastName, o.TotalAmount FROM Orders o
+join customers c ON  o.customerID = c.CustomerID
+WHERE TotalAmount > (SELECT AVG(TotalAmount) from orders)
